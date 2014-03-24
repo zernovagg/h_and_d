@@ -1,0 +1,247 @@
+/*
+Meal Planning Application
+Built by Susan Robertson
+MIT license
+
+*/
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* --------------------------------------------
+    Base Styles begin here
+-----------------------------------------------*/
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 100%;
+}
+
+.wrapper {
+    width: 1200px;
+    margin: 25px auto;
+}
+.mywrapper {
+    width: 1000px;
+	min-height: 500px;
+	padding: 20px 40px;
+    margin: 2% auto;
+    background: linear-gradient(to right, rgba(0,140,250,0.8), rgba(33,483,18,0.5));
+	border-top-left-radius: 20px;
+border-top-right-radius: 0;
+border-bottom-right-radius: 20px;
+border-bottom-left-radius: 0;
+}
+
+.advice{
+
+font-size: 12px;
+letter-spacing: 5px;
+text-align: center;
+color: rgba(0,85,456,1);
+
+}
+.leftcol{
+float:left;
+width: 48%;
+}
+.rightcol{
+float:right;
+width: 48%;
+}
+
+.font_hotel {
+font-family: 'Lobster Two', cursive;
+font-size: 3em;
+text-align: center;
+color: rgba(186,379,256,0.9);
+}
+
+.menu{
+font-family: 'Lobster Two', cursive;
+font-size: 2.5em;
+text-align: right;
+color: rgba(186,379,256,0.9);
+}
+
+.font_th{
+font-family: 'Lobster Two', cursive;
+font-size: 3em;
+text-align: center;
+color: rgba(186,379,256,0.9);
+font-size: 20px; 
+text-align: right; 
+padding: 0 15px;
+}
+
+/* --------------------------------------------
+    Headings
+-----------------------------------------------*/
+
+.hdg-a {
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
+
+/* --------------------------------------------
+    Days of the week table
+-----------------------------------------------*/
+
+.table {
+    width: 100%;
+    margin-bottom: 30px;
+	 margin-top: 30px;
+}
+
+
+
+.table th{
+padding: 8px;
+background: linear-gradient(to right, rgba(0,140,250,0.8), rgba(33,483,18,0.5));
+   
+border-top-left-radius: 15px;
+border-top-right-radius: 0;
+border-bottom-right-radius: 15px;
+border-bottom-left-radius: 0;
+
+}
+.table td {
+    padding: 8px;
+	background: #fff;
+   
+border-top-left-radius: 15px;
+border-top-right-radius: 0;
+border-bottom-right-radius: 15px;
+border-bottom-left-radius: 0;
+}
+
+.table td {
+    height: 200px;
+}
+
+.red {
+    color: red;
+}
+
+/* --------------------------------------------
+    Grid
+-----------------------------------------------*/
+
+.grid {
+    overflow: hidden;
+}
+
+.grid-col {
+    float: left;
+}
+
+.grid-one {
+    width: 100%;
+}
+
+.grid-two {
+    width: 50%;
+}
+
+.grid-three {
+    width: 33%;
+}
+
+/* --------------------------------------------
+    Drag and Drop
+-----------------------------------------------*/
+
+.v-list > * + * {
+    margin-top: 10px;
+}
+
+.recipeList {
+    margin-right: 25px;
+    margin-top: 25px;
+}
+
+.recipeList > li {
+  padding: 8px 11px;
+color: #ffffff;
+background:  linear-gradient(to right, rgba(0,140,250,0.8), rgba(33,483,18,0.5));
+text-align: left;
+border-radius: 8px;
+font-size: 15px;
+width: 55%;
+border: 1px solid #ffffff;
+}
+
+*[draggable=true] {
+  -moz-user-select:none;
+  -khtml-user-drag: element;
+  cursor: move;
+}
+
+.recipeList > li.over {
+    border: 1px dashed #000000;
+    opacity: .5;
+}
+
+.recipeList > li.draggable {
+    opacity: .5;
+    border: 1px dashed #000000;
+}
+
+.over {
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.menu-item {
+    display: block;
+    margin-bottom: 3px;
+}
+
+
+
