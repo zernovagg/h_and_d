@@ -27,6 +27,10 @@
 	<br>
 
 	<ul class="nav nav-tabs">
+	
+						
+					
+					
   <li class="active"><a href="#home" data-toggle="tab">Main</a></li>
   <li><a href="#profile" data-toggle="tab">Side</a></li>
   <li><a href="#messages" data-toggle="tab">Dessert</a></li>
@@ -35,11 +39,26 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
+
+					
+
   <div class="tab-pane active" id="home">
+  
+			
+			  
+  
   <ul id="recipeList-main" class="v-list recipeList" data-bind="foreach: dishes" >
-		 <!-- ko if: meal().type == 'main' -->
-        <li draggable="true" class="list-item" data-bind="text: meal().name + ' ' "> </li>
-	    <!-- /ko -->
+
+		<!-- ko if: meal().type == 'main' -->
+		
+        <li draggable="true" class="list-item" > <span style="font-size: 18px;" data-bind="text: meal().name + ' ' ">   </span>
+		<span style="color: rgb(0,85,456);" data-bind="text:'p: ' + meal().protein + ' f: ' + meal().fats + ' c: ' + meal().carbohydrate + '   kcal: ' + meal().kcal ">   </span>
+		
+		</li>
+	   
+		 <!-- /ko -->
+		 
+		 
             </ul>
 	</div>
   <div class="tab-pane" id="profile">
@@ -49,7 +68,10 @@
 		
 		
 		 <!-- ko if: meal().type == 'side' -->
-        <li draggable="true" class="list-item" data-bind="text: meal().name + ' '"> </li>
+      <li draggable="true" class="list-item" > <span style="font-size: 18px;" data-bind="text: meal().name + ' ' ">   </span>
+		<span style="color: rgb(0,85,456);" data-bind="text:'p: ' + meal().protein + ' f: ' + meal().fats + ' c: ' + meal().carbohydrate + '   kcal: ' + meal().kcal ">   </span>
+		
+		</li>
 	    <!-- /ko -->
 		
             </ul>
@@ -60,7 +82,10 @@
    <ul id="recipeList-dessert" class="v-list recipeList" data-bind="foreach: dishes">
        		
 		 <!-- ko if: meal().type == 'dessert' -->
-        <li draggable="true" class="list-item" data-bind="text: meal().name + ' ' "> </li>
+       <li draggable="true" class="list-item" > <span style="font-size: 18px;" data-bind="text: meal().name + ' ' ">   </span>
+		<span style="color: rgb(0,85,456);" data-bind="text:'p: ' + meal().protein + ' f: ' + meal().fats + ' c: ' + meal().carbohydrate + '   kcal: ' + meal().kcal ">   </span>
+		
+		</li>
 	    <!-- /ko -->
    </ul>
   </div>
@@ -175,37 +200,37 @@ function MealsViewModel() {
     // Non-editable catalog data - would come from the server
     self.availableMeals = [
       
-		{ id: "1", name: "chicken rice soup", type: "main" },
-        { id: "2", name: "steaks", type: "main" },
-        { id: "3", name: "apple pie", type: "dessert" },
-        { id: "4", name: "roasted brussel sprouts", type: "side" },
-        { id: "5", name: "mashed potatoes", type: "side" },
-        { id: "6", name: "fish tacos", type: "main" },
-        { id: "7", name: "salad", type: "side" },
-        { id: "8", name: "grilled chicken salad", type: "main" },
-        { id: "9", name: "side veggie", type: "side" },
-        { id: "10", name: "mixed fruit", type: "dessert" },
-        { id: "11", name: "shepherd's pie", type: "main" },
-        { id: "12", name: "spaghetti and home made sauce", type: "main" },
-        { id: "13", name: "roast squash", type: "side" },
-        { id: "14", name: "lamb steaks", type: "main" },
-        { id: "15", name: "crockpot beef stew", type: "main" },
-        { id: "16", name: "kielbasa crockpot meal", type: "main" },
-        { id: "17", name: "beet salad", type: "side" },
-        { id: "18", name: "chili", type: "main" },
-        { id: "19", name: "corn muffins", type: "side" },
-        { id: "20", name: "grilled sausages", type: "main" },
-        { id: "21", name: "grilled veggies", type: "side" },
-        { id: "22", name: "turkey meatloaf", type: "main" },
-        { id: "23", name: "meatloaf", type: "main" },
-        { id: "24", name: "mashed cauliflower", type: "side" },
-        { id: "25", name: "sloppy joes", type: "main" },
-        { id: "26", name: "poached dover sole", type: "main" },
-        { id: "27", name: "salmon", type: "main" },
-        { id: "28", name: "steamed broccoli", type: "side" },
-        { id: "29", name: "cous cous", type: "side" },
-        { id: "30", name: "hamburgers", type: "side" },
-        { id: "31", name: "roast cauliflower", type: "side" }
+		{ id: "1", name: "Chicken rice soup", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0},
+        { id: "2", name: "Steaks", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0 },
+        { id: "3", name: "Apple pie", type: "dessert", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "4", name: "Roasted brussel sprouts", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "5", name: "Mashed potatoes", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "6", name: "Fish tacos", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "7", name: "Salad", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "8", name: "Grilled chicken salad", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "9", name: "Side veggie", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "10", name: "Mixed fruit", type: "dessert", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "11", name: "Shepherd's pie", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "12", name: "Spaghetti and home made sauce", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "13", name: "Roast squash", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "14", name: "Lamb steaks", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "15", name: "Crockpot beef stew", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "16", name: "Kielbasa crockpot meal", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "17", name: "Beet salad", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "18", name: "Chili", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "19", name: "Corn muffins", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "20", name: "Grilled sausages", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "21", name: "Grilled veggies", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "22", name: "Turkey meatloaf", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "23", name: "Meatloaf", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "24", name: "Mashed cauliflower", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "25", name: "Sloppy joes", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "26", name: "Poached dover sole", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "27", name: "Salmon", type: "main", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "28", name: "Steamed broccoli", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "29", name: "Cous cous", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "30", name: "Hamburgers", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  },
+        { id: "31", name: "Roast cauliflower", type: "side", protein: 9.6, fats: 15.0, carbohydrate: 20.3, kcal: 140.0  }
     ];    
 
     // Editable data
@@ -221,9 +246,28 @@ function MealsViewModel() {
     }
 	
     self.dishes = ko.observableArray(self.arrayOfMeals);
+	
+	
+	
+	
 }
 
 ko.applyBindings(new MealsViewModel());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 $.getJSON('dishes.json', function(data) {
@@ -246,6 +290,11 @@ $.getJSON('dishes.json', function(data) {
  }).appendTo('body');
 
 });
+
+
+
+
+
 
 
 
