@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	
+	<title>Meal Planner</title>
+	
+	
+	   <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/styles.css" />
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="icon" href="o.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="o.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/semantic/packaged/css/semantic.css">
+	<link rel="stylesheet" href="css/datepicker.css">
+	<script src="js/libs/jquery-1.10.2.min.js"></script>
+	<script src="js/libs/printThis.js"></script>
+	<script src="css/semantic/packaged/javascript/semantic.js"></script>
+	<script src="js/libs/bootstrap.min.js"></script>
+	<script src="js/libs/bootstrap-datepicker.js"></script>
+	<script src="js/libs/knockout-2.3.0.js"></script>
+	<script src="js/bindingHandlers.js"></script>
+
+	<link rel="stylesheet" href="css/meal.css">
+	<script src="js/dataStore.js"></script>
+		<script src="js/model/Dish.js"></script>
+	<script src="js/viewmodels/RationViewModel.js"></script>
+	<script src="js/viewmodels/SettingsViewModel.js"></script>
+	<script src="js/viewmodels/DishesViewModel.js"></script>
+
+	<!-- <script src="js/DishViewModel.js"></script>
+	<script src="js/router.js"></script> -->
+	<script src="js/meal.js"></script>
+
+</head>
+<body>
+
+	<br>
+<h1 class="no_margin logo font_hotel"> Health & Diet<i class="icon-leaf"></i></h1>
+<h4 class="advice"> use your loaf. it's a peace of cake <h4>
+		
+
+	   
+<div class = "mywrapper">
+
+	<section class="mp-dishes">
+	<h2 class="no_margin logo font_hotel" style="font-size: 25px;"> Recipe List <i class="icon-leaf"></i></h2><br/>
+		<div>
+			<div class="input-group">
+                        <span class="input-group-addon"><i class="icon-search"></i></span>
+                        <input type="text" class="form-control" placeholder="Type a part of name of dish" data-bind="value: filter.name, valueUpdate:'keyup'" />
+			</div><br/>
+			<b class='filter'>Select for:</b>
+			<select class="ui selection dropdown" data-bind="options: choose.time, value: time"></select><br/>
+			<b class='filter'>Filter: </b>
+			
+			
+		
+			
+			
+			
+			
+			
+			
+			
+			<select class="ui selection dropdown" data-bind="options: choose.types, value: filter.type, optionsCaption: 'Types...'"></select><br/>
+			<b class='filter'>Exclude: </b>
+			<select class="ui selection dropdown" data-bind="options: choose.components, value: filter.excludeComp, optionsCaption: 'Ingridients...'"></select>
+		</div>
+		<div class="ui items" data-bind="foreach: filteredDishes">
+			<div class="item">
+				
+				<div class="content">
+					<div class="name" data-bind="text: name"></div>
+					<div style="clear:both;"></div>
+					(<span class="description" data-bind="foreach: components">
+						<span data-bind="text: $data"></span>&nbsp;
+					</span>)
+					<div style="clear:both;"></div>
+					<div class="pfc">Total Protein, mg: <span data-bind="text: protein"></span></div>
+					<div class="pfc">Total Fat, mg: <span data-bind="text: fats"></span></div>
+					<div class="pfc">Carbohyd., mg: <span data-bind="text: carbohydrate"></span></div>
+					<div class="pfc">Kcal.: <span data-bind="text: kcal"></span></div>
+					<div style="clear:both;"></div>
+					<div class="error" data-bind="if: $root.allowed('protein', protein) 
+									|| $root.allowed('fats', fats) 
+									|| $root.allowed('carbohydrate', carbohydrate)">
+						<i class="exclamation icon"></i>
+						Limit of <span data-bind="text: $root.showmsg"></span>
+					</div>
+					
+					<button class="addbutton ui tiny green button" 
+							data-bind=" 
+							css: {disabled: $root.allowed('protein', protein)
+									|| $root.allowed('fats', fats)
+									|| $root.allowed('carbohydrate', carbohydrate) },
+							disable: $root.allowed('protein', protein)
+									|| $root.allowed('fats', fats)
+									|| $root.allowed('carbohydrate', carbohydrate),
+							click: $root.addDish"> Add <i class="icon-chevron-right"></i><i class="icon-chevron-right"></i><i class="icon-chevron-right"></i></button>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section style="width: 48%; float: right;">
+	 <div class="mp-settings side item">
+	 	<h2 class="no_margin logo font_hotel" style="font-size: 25px;"> Settings <i class="icon-leaf"></i></h2><br/>
+	    	<div class="right-panel">
+			
+			<h2 class="no_margin logo font_hotel" style="font-size: 20px;">Limit settings<i class="icon-chevron-right"></i><i class="icon-chevron-right"></i><i class="icon-chevron-right"></i></h2><br/>
+	    	<div class="ui input">
+				<table>
+					<tr>
+						<td style="font-size: 12px; color:#fff;">Protein, mg:</td>
+						<td><input class="limitinput" type="number" data-bind="value: limitation.protein">	</td>
+					</tr>
+					<tr>
+						<td style="font-size: 12px; color:#fff;">Fats, mg:</td>
+						<td><input class="limitinput" type="number" data-bind="value: limitation.fats"></td>
+					</tr>
+					<tr>
+						<td style="font-size: 12px; color:#fff;">Carbohydr., mg:</td>
+						<td><input class="limitinput" type="number" data-bind="value: limitation.carbohydrate">		</td>
+					</tr>
+					<tr>
+						<td style="font-size: 12px; color:#fff;">Kcal:</td>
+						<td><input class="limitinput" type="number" data-bind="value: limitation.kcal">		</td>
+					</tr>
+	    
+	    	  	
+	    	
+	    			
+	    			</table>
+	    	</div>
+	
+			<h2 class="no_margin logo font_hotel" style="font-size: 20px; padding-top: 10px;">Allowable<i class="icon-chevron-right"></i><i class="icon-chevron-right"></i><i class="icon-chevron-right"></i></h2>
+	    	<div class="yellow ui message">
+		    	<small style="text-align:center;">
+		    	Proteins, mg:<span data-bind="text: left.protein"></span>,<br/>
+		    	Fats, mg:<span data-bind="text: left.fats"></span>,<br/>
+		    	Carbohydr., mg.:<span data-bind="text: left.carbohydrate"></span><br/>
+				Kcal.:<span data-bind="text: left.kcal"></span>
+		    	</small>
+	    	</div>
+			
+			
+			
+			</div>
+	    	<div class="calendar left-panel" data-bind="calendar: selectedDate"></div>
+			
+			
+			
+			
+	    </div>
+	    <!-- <div class="calendar" data-bind="calendar: selectedDate"></div> -->
+
+		<div style="float:right; width: 98%">
+			<h2 class="no_margin logo font_hotel" style="font-size: 25px;"> Ration <i class="icon-leaf"></i></h2><br/>
+	<section class="mp-ration">
+		<select class="ui selection dropdown" data-bind="options: dates, value: dishDate, optionsCaption: 'Dates...'"></select>
+		<h3 class="ui purple label" style="min-width: 144px;" data-bind="text: selectedDate"></h3>
+	
+		<table id="table_ration" class="table" width="100%;">
+			<thead>
+	
+			</thead>
+			<tbody >
+			
+					<tr>
+					<th class="one wide column" colspan="7"><h2 class="font_th">Breakfast<i class="icon-leaf"></i></h2></th>
+				</tr>
+				
+				<!-- ko foreach: filteredRation -->
+					<!-- ko if: time == "Breakfast" -->
+				<tr >
+				
+					<td data-bind="text: name"></td>
+					<td data-bind="text:'P: ' + protein" style="font-size: 12px;"> </td>
+					<td data-bind="text:'F: '+ fats" style="font-size: 12px;"></td>
+					<td data-bind="text:'C-h.: '+ carbohydrate" style="font-size: 12px;"></td>
+					<td data-bind="text:'Kcal: '+ kcal" style="font-size: 12px;"></td>
+					<td><button class="mini ui button" data-bind="click: $root.delDish" style="font-size: 12px;"><i class="icon-remove"></i></button></td>
+				</tr>
+				
+				
+				    <!-- /ko -->
+				   <!-- /ko -->
+				   
+				   <tr>
+					<th class="one wide column" colspan="6"><h2 class="font_th" style="text-align:left;">Dinner<i class="icon-leaf"></i></h2></th>
+				</tr>
+			
+				<!-- ko foreach: filteredRation -->
+				<!-- ko if: time == "Dinner" -->
+				<tr >
+				
+					<td data-bind="text: name"></td>
+					<td data-bind="text:'P: ' + protein" style="font-size: 12px;"> </td>
+					<td data-bind="text:'F: '+ fats" style="font-size: 12px;"></td>
+					<td data-bind="text:'C-h.: '+ carbohydrate" style="font-size: 12px;"></td>
+					<td data-bind="text:'Kcal: '+ kcal" style="font-size: 12px;"></td>
+					<td><button class="mini ui button" data-bind="click: $root.delDish" style="font-size: 12px;"><i class="icon-remove"></i></button></td>
+				</tr>
+				
+				
+				    <!-- /ko -->
+				   <!-- /ko -->
+			
+				    <tr>
+					<th class="one wide column" colspan="7"><h2 class="font_th">Supper<i class="icon-leaf"></i></h2></th>
+				</tr>
+				 
+				<!-- ko foreach: filteredRation -->
+				<!-- ko if: time == "Supper" -->
+				<tr >
+				
+					<td data-bind="text: name"></td>
+					<td data-bind="text:'P: ' + protein" style="font-size: 12px;"> </td>
+					<td data-bind="text:'F: '+ fats" style="font-size: 12px;"></td>
+					<td data-bind="text:'C-h.: '+ carbohydrate" style="font-size: 12px;"></td>
+					<td data-bind="text:'Kcal: '+ kcal" style="font-size: 12px;"></td>
+					<td><button class="mini ui button" data-bind="click: $root.delDish" style="font-size: 12px;"><i class="icon-remove"></i></button></td>
+				</tr>
+				
+				
+				    <!-- /ko -->
+				   <!-- /ko -->
+				   
+				   
+				   
+				
+			</tbody>
+			<tfoot>
+			<tr>
+					<th class="one wide column" colspan="7"><h2 class="font_th" style="text-align:center;">Total<i class="icon-leaf"></i></h2></th>
+				</tr>
+				<tr>
+					<td class="one wide column">Total: <span data-bind="text: filteredRation().length"></span> </td>
+				
+				
+					<td class="one wide column" data-bind="text: total.protein()"></td>
+					<td class="one wide column" data-bind="text: total.fats()"></td>
+					<td class="one wide column" data-bind="text: total.carbohydrate()"></td>
+					<td class="one wide column" data-bind="text: total.kcal()"></td>
+					<td></td>
+				</tr>
+			</tfoot>
+		</table>
+		<div>
+			<button class="mini ui button" data-bind="click: print">Print</button>
+		</div>
+	</section>
+</div>
+	</section>
+
+	<div style="clear:both;"><br/></div>
+</div>	
+<h4 class="advice" style="margin: 25px auto;"> Bionic University <h4>
+</body>
+</html>

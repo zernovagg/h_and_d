@@ -1,0 +1,125 @@
+* {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+	/*width: 750px;*/
+	margin: 0 auto;
+	/*margin-top: 20px;*/
+}
+
+header {
+	padding-bottom: 20px; 
+}
+
+section {
+
+} 	
+
+section.mp-dishes{
+float: left;
+width: 49%;
+}
+
+section.mp-dishes div.item{
+	padding: 8px 11px;
+color: #ffffff;
+background: linear-gradient(to right, rgba(0,140,250,0.8), rgba(33,483,18,0.5));
+text-align: left;
+border-radius: 8px;
+font-size: 15px;
+width: 98%;
+border: 1px solid #ffffff;
+}
+
+
+	section.mp-dishes div.item div.content{
+		width: 95%;
+		float: left;
+		padding: 10px 10px !important;
+		font-size: 0.9em !important;
+	}
+		section.mp-dishes div.item div.content .name{
+			color: #fff;
+			word-wrap: break-word !important;
+		}
+		section.mp-dishes div.item div.content .description{
+			display: inline;
+			/*float: right;*/
+			text-align: left;
+					}
+
+	section.mp-dishes div.item div.pfc {
+		color: #ddd;
+		font-size: 0.85em;
+		float: left;
+		padding: 5px 5px;
+	}
+
+	section.mp-dishes div.ui.input input{
+		padding: 0.6em 1em !important;
+	}
+	section.mp-dishes div.ui.input i{
+		padding-top: 0.6em !important;
+	}
+
+	section.mp-dishes select,
+	section.mp-dishes div.ui.input input {
+		border: 1px solid #EEE !important;
+	}
+
+
+
+	
+
+div.mp-settings div.input span {
+	width: 145px !important;
+	float: left;
+}
+
+
+
+
+div.mp-settings div.message{
+	padding: 0.5em !important;
+}
+
+
+
+.right-panel{
+float: right;
+width: 43%;
+padding: 10px 0
+}
+.left-panel{
+float: left;
+width: 45%;
+}
+
+.limitinput{
+width: 100px;
+line-height: 110%;
+padding: 0;
+margin:0;
+
+}
+
+.filter{
+	padding-left: 10px;
+}
+
+.error {
+	float: left;
+	padding: 3px 3px;
+	font-size: 18px;
+	color: #CA1414;
+}
+
+.calendar{
+margin: 110px 0 25px 0;
+}
+
+.calendar .datepicker {
+	margin: 0 auto;
+	padding-top: 10px;
+}
